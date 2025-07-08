@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+  <h2>Your Projects</h2>
+
+  {% if projects %}
+    <ul>
+      {% for project in projects %}
+        <li>{{ project.name }}</li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>You don’t have any projects yet.</p>
+  {% endif %}
+  <a href="{% url 'tracker:project_create' %}">➕ Create New Project</a>
+  <a href="{% url 'tracker:issue_create' %}">➕ Create New Issue</a>
+
+
+{% endblock %}

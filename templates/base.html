@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Issue Tracker</title>
+</head>
+<body>
+  <nav>
+    {% if user.is_authenticated %}
+      <p>Welcome, {{ user.email }} | <a href="{% url 'accounts:logout' %}">Logout</a></p>
+    {% else %}
+      <a href="{% url 'accounts:login' %}">Login</a> |
+      <a href="{% url 'accounts:signup' %}">Sign Up</a>
+    {% endif %}
+  </nav>
+
+  <hr>
+  {% if messages %}
+    {% for message in messages %}
+      <p>{{ message }}</p>
+    {% endfor %}
+  {% endif %}
+  {% block content %}{% endblock %}
+</body>
+</html>
